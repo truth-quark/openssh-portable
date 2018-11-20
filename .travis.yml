@@ -15,8 +15,18 @@ before_install:
   - ./configure --prefix=$LIBOQS_INSTALL/oqs --with-pic=yes --enable-shared=no --enable-openssl --with-openssl-dir=/usr
   - make -j
   - make install
-  - rm -f <path-to-install-liboqs>/lib/liboqs.so*
+  - rm -f $LIBOQS_INSTALL/lib/liboqs.so*
 
 script:
   - pwd
   - echo $HOME
+  - export LIBOQS_INSTALL=/tmp/liboqs-install
+  - export OPENSSH_INSTALL=/tmp/openssh-install
+  - autoreconf
+  - ./configure --enable-pq-kex --enable-hybrid-kex      \
+                --prefix=$OPENSSH_INSTALL                \
+                --sysconfdir=$OPENSSH_INSTALL            \
+                --with-liboqs-dir=$LIBOQS_INSTALL
+  - make -j
+  - make install
+  - make tests
