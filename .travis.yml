@@ -4,6 +4,8 @@ sudo: required
 language: c
 
 before_install:
+  - pwd
+  - export CORE_DIR_THING=`realpath .`
   - sudo apt-get update
   - sudo apt-get install -y autoconf automake gcc libtool libssl-dev make unzip xsltproc
   - sudo mkdir -p -m 0755 /var/empty
@@ -16,8 +18,11 @@ before_install:
   - make -j
   - make install
   - rm -f $LIBOQS_INSTALL/lib/liboqs.so*
+  - cd
 
 script:
+  - pwd
+  - cd $CORE_DIR_THING
   - pwd
   - echo $HOME
   - export LIBOQS_INSTALL=/tmp/liboqs-install
