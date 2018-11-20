@@ -23,10 +23,7 @@ script:
   - export LIBOQS_INSTALL=/tmp/liboqs-install
   - export OPENSSH_INSTALL=/tmp/openssh-install
   - autoreconf
-  - ./configure --enable-pq-kex --enable-hybrid-kex      \
-                --prefix=$OPENSSH_INSTALL                \
-                --sysconfdir=$OPENSSH_INSTALL            \
-                --with-liboqs-dir=$LIBOQS_INSTALL
+  - ./configure --enable-pq-kex --enable-hybrid-kex --prefix=$OPENSSH_INSTALL --sysconfdir=$OPENSSH_INSTALL --with-liboqs-dir=$LIBOQS_INSTALL
   - make -j
   - make install
   - make tests
