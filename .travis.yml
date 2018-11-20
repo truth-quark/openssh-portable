@@ -7,7 +7,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y autoconf automake gcc libtool libssl-dev make unzip xsltproc
   - sudo mkdir -p -m 0755 /var/empty
-
   - export LIBOQS_CODE=/tmp/liboqs
   - export LIBOQS_INSTALL=/tmp/liboqs-install
   - git clone -b master --single-branch https://github.com/open-quantum-safe/liboqs.git $LIBOQS_CODE
