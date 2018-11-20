@@ -12,7 +12,7 @@ before_install:
   - git clone -b master --single-branch https://github.com/open-quantum-safe/liboqs.git $LIBOQS_CODE
   - cd $LIBOQS_CODE
   - autoreconf -i
-  - ./configure --prefix=/usr/oqs --with-pic=yes --enable-shared=no --enable-openssl --with-openssl-dir=/usr
+  - ./configure --prefix=$LIBOQS_INSTALL/oqs --with-pic=yes --enable-shared=no --enable-openssl --with-openssl-dir=/usr
   - make -j
   - make install
   - rm -f <path-to-install-liboqs>/lib/liboqs.so*
