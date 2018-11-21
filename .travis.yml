@@ -5,26 +5,13 @@ language: c
 
 before_install:
   - pwd
-  - export CORE_DIR_THING=`realpath .`
   - sudo apt-get update
   - sudo apt-get install -y autoconf automake gcc libtool libssl-dev make unzip xsltproc
   - sudo mkdir -p -m 0755 /var/empty
-  - export LIBOQS_CODE=/tmp/liboqs
-  - export LIBOQS_INSTALL=/tmp/liboqs-install
-  - git clone -b master --single-branch https://github.com/open-quantum-safe/liboqs.git $LIBOQS_CODE
-  - cd $LIBOQS_CODE
-  - autoreconf -i
-  - ./configure --prefix=$LIBOQS_INSTALL/oqs --with-pic=yes --enable-shared=no --enable-openssl --with-openssl-dir=/usr
-  - make -j
-  - make install
-  - rm -f $LIBOQS_INSTALL/lib/liboqs.so*
-  - cd
 
 script:
   - pwd
-  - cd $CORE_DIR_THING
-  - pwd
-  - echo $HOME
+  - echo "Home dir is" $HOME
   - export LIBOQS_INSTALL=/tmp/liboqs-install
   - export OPENSSH_INSTALL=/tmp/openssh-install
   - autoreconf
